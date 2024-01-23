@@ -1,16 +1,46 @@
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { AlignJustify } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
 
 export default function ActionButtons({}: Props) {
   return (
-    <div className="flex justify-center items-center space-x-4">
-      <button className="px-4 py-2 font-semibold rounded-lg hover:cursor-pointer hover:bg-slate-100">
-        Sign in
-      </button>
-      <h1 className="px-4 py-2 rounded-lg font-semibold bg-blue-500 hover:cursor-pointer text-white hover:bg-black">
-        Get Started
-      </h1>
+    <div>
+      <div className="md:hidden">
+        <Sheet>
+          <SheetTrigger>
+            <AlignJustify />
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetDescription>
+                <div className="flex flex-col space-y-4 items-start w-full text-black text-lg mt-10">
+                  <Link href={"/"}>Sign in</Link>
+                  <Link href={"/"}>Get Started</Link>
+                  <Link href={"/"}>Templates</Link>
+                  <Link href={"/"}>Documentation</Link>
+                  <Link href={"/"}>Pricing</Link>
+                </div>
+              </SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+      </div>
+      <div className="hidden md:flex md:justify-center md:items-center md:space-x-4">
+        <Button variant={"ghost"} className="text-md">
+          Sign in
+        </Button>
+        <Button className="text-md bg-blue-500">Get Started</Button>
+      </div>
     </div>
   );
 }
